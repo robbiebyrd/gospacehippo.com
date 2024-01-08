@@ -1,0 +1,67 @@
+@use "../css/colors";
+@use "../css/functions";
+
+@keyframes moon-fade-in-animation {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: .4;
+  }
+}
+
+.moon {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  opacity: .4;
+  will-change: all;
+  filter: blur(0.125vw);
+  animation: ease-in 5s moon-fade-in-animation;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  z-index: 0;
+  overflow: hidden;
+
+  & div.moon-holder {
+    right: -50vw;
+    position: relative;
+    display: block;
+    z-index: 1
+  }
+
+  @keyframes fade-in-animation {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .4;
+    }
+  }
+
+  div.holder {
+    transition: all 1s;
+    z-index: -1 !important;
+
+    img {
+      z-index: -1 !important;
+    }
+  }
+
+
+  .shadow-1 {
+    @include functions.shadow($color: scale-color(rgba(colors.$color-sol-dark, 1.0), $lightness: 55%), $x: -1em, $y: -1.5em, $blur: 1.25em);
+  }
+
+  .shadow-2 {
+    @include functions.shadow($color: scale-color(rgba(colors.$color-sol-dark, .25), $lightness: 65%), $x: -1em, $y: -1.5em, $blur: 1em);
+  }
+
+  .shadow-3 {
+    @include functions.shadow($color: scale-color(rgba(colors.$color-sol-dark, .50), $lightness: 60%), $x: -1em, $y: -1.5em, $blur: 1.5em);
+  }
+}
+

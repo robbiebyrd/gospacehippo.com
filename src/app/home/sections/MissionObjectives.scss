@@ -1,0 +1,50 @@
+#MissionObjectives {
+  aside.objectives-aside {
+    display: flex;
+    flex-direction: row;
+    z-index: 999;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+
+    .aside-text {
+      padding: 1em;
+      width: 60%;
+    }
+
+    .aside-pic {
+      width: 40%;
+
+      img {
+        width: 100%;
+        margin-top: -25%;
+        margin-bottom: -5px;
+      }
+    }
+  }
+}
+
+
+@media (orientation: portrait) {
+  #MissionObjectives {
+    aside.objectives-aside {
+      flex-direction: column;
+      align-items: center;
+
+      .aside-text {
+        width: 80%;
+      }
+
+      .aside-pic {
+        text-align: center;
+        width: 80%;
+
+        img {
+          margin-top: 0;
+          width: 100%;
+
+        }
+      }
+    }
+  }
+}

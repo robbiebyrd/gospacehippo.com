@@ -1,0 +1,242 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+.shadowy {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(180deg, black, colors.$color-dark);
+  top: 0;
+  left: 0;
+}
+
+.is-open {
+  opacity: 1;
+  z-index: 200;
+  transition: opacity .5s;
+}
+
+.is-closed {
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  transition: all .5s;
+}
+
+.button-panel {
+  z-index: 10;
+
+  fieldset {
+    legend {
+      margin: #{typography.$font-regular * -1} !important;
+      padding: typography.$font-regular typography.$font-bigger !important;
+      width: auto !important;
+    }
+  }
+}
+
+.button-panel .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.button-panel-button {
+  flex-grow: 3;
+  flex-shrink: 2;
+  flex-basis: 20vw;
+  margin: 0 !important;
+  height: 6em !important;
+  z-index: 15;
+  text-transform: uppercase;
+}
+
+
+.flickity-enabled {
+  position: relative;
+  height: 100%;
+
+  .flickity-prev-next-button {
+    width: 10%;
+    height: 10%;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+
+    &.next {
+      position: absolute;
+      right: 0;
+    }
+
+    &.previous {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .flickity-page-dots {
+    display: none;
+  }
+
+  .flickity-viewport {
+    overflow: hidden;
+    height: 100%;
+
+    .flickity-slider {
+
+      .cell {
+        top: 0;
+        max-height: 80vh;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+  }
+}
+
+.popup {
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  display: block;
+  @include helpers.force-center-div;
+  overflow: hidden;
+
+  .content {
+    height: 50%;
+    margin: typography.$font-regular;
+    position: relative;
+
+    .portfolio {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    h1 {
+      font-size: typography.$font-bigger;
+    }
+
+    h2 {
+      font-family: typography.$mono-font;
+      font-size: typography.$font-big;
+    }
+
+  }
+
+  .close.x {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    right: .5em;
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 2/1 !important;
+    font-family: typography.$mono-font;
+    font-size: typography.$font-big;
+    background: colors.$color-dark;
+    padding: math.div(typography.$font-tiny, 2);
+    text-align: center;
+
+    &:before {
+      content: "X";
+      z-index: 999;
+    }
+  }
+
+  .timer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: typography.$font-regular;
+    margin: math.div(typography.$font-tiny, 2);
+    animation: linear shrink-width 5s;
+  }
+
+  .corner {
+    position: absolute;
+    z-index: 2;
+    width: typography.$font-regular;
+    height: typography.$font-regular;
+    margin: math.div(typography.$font-tiny, 2);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
+  }
+
+  svg {
+    width: 20%;
+    float: right;
+  }
+
+  @each $color in map.keys(colors.$colors) {
+    &.color-color-#{$color} {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &-dark {
+        box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color,
+        math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color;
+        background-color: $dark-color;
+
+        .timer {
+          background-color: $light-color !important;
+          z-index: 1;
+        }
+
+        .corner {
+          @include vectors.corner_alert_window($light-color, $dark-color);
+        }
+
+        svg.colorize path {
+          fill: $light-color;
+        }
+
+        h2 {
+          color: $light-color;
+        }
+
+        h1, p, .close {
+          color: colors.$color-bright;
+        }
+      }
+
+      &,
+      &-light {
+        box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color,
+        math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color;
+        background-color: $light-color;
+
+        .timer {
+          background: $dark-color !important;
+          z-index: 1;
+        }
+
+        .corner {
+          @include vectors.corner_alert_window($dark-color, $light-color);
+        }
+
+        svg.colorize path {
+          fill: $dark-color;
+        }
+
+        h2 {
+          color: $dark-color;
+        }
+
+        h1, p, .close {
+          color: $dark-color;
+        }
+
+
+      }
+    }
+  }
+}

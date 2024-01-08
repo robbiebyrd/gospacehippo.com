@@ -1,0 +1,14 @@
+#LanguagesWeveUsed {
+  overflow: hidden;
+  @media (orientation: portrait) {
+    * {
+      //display: none;
+    }
+  }
+}
+
+#wordcloud-contain {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}

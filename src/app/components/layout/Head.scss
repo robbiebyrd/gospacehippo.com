@@ -1,0 +1,149 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/functions";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 100px;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 7;
+  opacity: 1;
+  padding: 0;
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+
+  &.overlay {
+    position: fixed;
+  }
+
+  .header-holder {
+    grid-area: 1 / 1 / 1 / 2;
+    margin: 1vw;
+
+    svg {
+
+    }
+  }
+
+  .menu-holder {
+    grid-area: 1 / 3 / 1 / 3;
+    text-align: right;
+    width: 90%;
+    z-index: 200;
+
+    svg {
+      width: 40%;
+      height: 40%;
+      cursor: pointer;
+      padding: 1em;
+      position: relative;
+      z-index: 125;
+    }
+  }
+}
+
+
+.nav-holder.hidden-nav {
+  margin-right: -200% !important;
+}
+
+.nav-holder {
+  position: absolute;
+  top: 1em;
+  right: 7em;
+  z-index: 75;
+  margin-right: 0 !important;
+  transition: all 1s ease-in-out;
+
+  nav {
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex; // Can be none when mobile
+      flex-direction: row;
+      @media (orientation: portrait) {
+        flex-direction: column;
+      }
+
+      li {
+        margin: 0;
+        padding: .5em 1em;
+        font-family: typography.$mono-font;
+        text-transform: uppercase;
+        font-size: 1.5em;
+
+      }
+    }
+  }
+
+
+  @each $color in map.keys(colors.$colors) {
+    nav.color-color-#{$color} {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &-dark ul {
+        box-shadow: inset math.div(typography.$font-small, 2) math.div(typography.$font-small, 2) $light-color,
+        math.div(typography.$font-small, 2) math.div(typography.$font-small, 2) $light-color;
+        background-color: $dark-color;
+        color: $light-color;
+        border: math.div(typography.$font-small, 2) $dark-color;
+
+        li {
+          &:hover {
+            background: $light-color;
+            transition: all 1s;
+
+            & a {
+              transition: all 1s;
+              color: colors.$color-bright;
+            }
+          }
+        }
+      }
+
+      &-dark.translucent ul {
+        background-color: rgba($dark-color, .75) !important;
+      }
+
+      & ul,
+      &-light ul {
+        box-shadow: inset math.div(typography.$font-small, 2) math.div(typography.$font-small, 2) $dark-color,
+        math.div(typography.$font-small, 2) math.div(typography.$font-small, 2) $dark-color;
+        background-color: $light-color;
+        color: $dark-color;
+        border: math.div(typography.$font-small, 2) $light-color;
+
+        li {
+          &:hover {
+            background: $dark-color;
+            transition: all 1s;
+
+            & a {
+              transition: all 1s;
+              color: colors.$color-dark;
+            }
+          }
+        }
+      }
+
+      &-light.translucent ul {
+        background-color: rgba($light-color, .75);
+      }
+
+    }
+  }
+}

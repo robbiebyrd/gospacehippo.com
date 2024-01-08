@@ -1,0 +1,77 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/functions";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+aside {
+  position: relative;
+  @each $color in map.keys(colors.$colors) {
+    &.color-color-#{$color} {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &dark.hover:hover, &-light.hover:hover {
+        z-index: 100;
+      }
+
+      &-dark, &-light.hover:hover {
+        @include functions.border($light-color, math.div(typography.$font-smaller, 2));
+        background-color: $dark-color;
+        color: $light-color;
+        transition: all .2s;
+
+        & * {
+          color: $light-color;
+        }
+
+        &.contrast * {
+          color: colors.$color-bright;
+        }
+
+        &.translucent {
+          background-color: rgba($dark-color, .75);
+        }
+
+        &.glossy {
+          background-color: rgba($dark-color, .5);
+        }
+
+        &.transparent {
+          background-color: rgba($dark-color, .25);
+        }
+      }
+
+      &,
+      &-light, &dark.hover:hover {
+        @include functions.border($dark-color, math.div(typography.$font-smaller, 2));
+        background-color: $light-color;
+        color: $dark-color;
+
+        & * {
+          color: $dark-color;
+
+        }
+
+        &.contrast * {
+          color: colors.$color-bright;
+        }
+
+        &.translucent {
+          background-color: rgba($light-color, .75);
+        }
+
+        &.glossy {
+          background-color: rgba($light-color, .5);
+        }
+
+        &.transparent {
+          background-color: rgba($light-color, .25);
+        }
+
+      }
+    }
+  }
+}

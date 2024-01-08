@@ -1,0 +1,217 @@
+@use 'colors';
+@use 'typography';
+@use "sass:map";
+
+@keyframes color-gradient-rainbow-animate-dual-animation {
+  0% {
+    --gradient-angle: 90deg;
+    background-position: left top;
+    background-size: 100vw;
+  }
+  100% {
+    --gradient-angle: 170deg;
+    background-position: right bottom;
+    background-size: 400vw;
+  }
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 90deg;
+}
+
+@each $color-1 in map.keys(colors.$colors) {
+  @each $color-2 in map.keys(colors.$colors) {
+    .color-color-gradient-animated-#{$color-1}-#{$color-2} {
+      $light-color-1: map.get(map.get(colors.$colors, $color-1), "light");
+      $dark-color-1: map.get(map.get(colors.$colors, $color-1), "dark");
+      $light-color-2: map.get(map.get(colors.$colors, $color-2), "light");
+      $dark-color-2: map.get(map.get(colors.$colors, $color-2), "dark");
+
+      &, &-dark {
+        @include colors.clip-text-background;
+        --gradient-angle: 90deg;
+        background-size: 200vw;
+        background: linear-gradient(var(--gradient-angle), $dark-color-1, $dark-color-2);
+        animation: color-gradient-rainbow-animate-dual-animation 5s linear alternate infinite;
+      }
+
+      &-light {
+        @include colors.clip-text-background;
+        --gradient-angle: 90deg;
+        background-size: 200vw;
+        background: linear-gradient(var(--gradient-angle), $light-color-1, $light-color-2);
+        animation: color-gradient-rainbow-animate-dual-animation 5s linear alternate infinite;
+      }
+    }
+  }
+}
+
+@keyframes faded {
+  0%, 50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.color-gradient-rainbow-animated {
+  @include colors.clip-text-background;
+  --gradient-angle: 90deg;
+  background-size: 200vw;
+  background: linear-gradient(var(--gradient-angle), colors.$color-rainbow-light, colors.$color-rainbow-light);
+  animation: color-gradient-rainbow-animate-dual-animation 3s linear alternate infinite;
+}
+
+.color-gradient-rainbow-animated-fade-in {
+  --gradient-angle: 90deg;
+  background: linear-gradient(var(--gradient-angle), colors.$color-rainbow-light, colors.$color-rainbow-light);
+  background-size: 200vw;
+  animation: color-gradient-rainbow-animate-dual-animation 20s linear alternate infinite, 1s ease-in fade-in-animation-delay;
+  @include colors.clip-text-background;
+}
+
+
+.color-gradient-rainbow-animated-fade-in {
+  --gradient-angle: 90deg;
+  background: linear-gradient(var(--gradient-angle), colors.$color-rainbow-light, colors.$color-rainbow-light);
+  background-size: 200vw;
+  animation: color-gradient-rainbow-animate-dual-animation 20s linear alternate infinite, 1s ease-in fade-in-animation-delay;
+  @include colors.clip-text-background;
+}
+
+@keyframes fade-in-animation-delay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-animation-delay-2 {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes shrink-width {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+
+@keyframes blur-out-animation {
+  0% {
+    top: 0;
+    opacity: 1;
+    right: -100vw;
+  }
+  100% {
+    top: 0;
+    right: -50vw;
+  }
+}
+
+@keyframes blur-in-animation-delay {
+  0% {
+    filter: blur(0.75vw);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out-animation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+  }
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-animation {
+  0% {
+    margin-left: 0;
+  }
+  28% {
+    margin-left: -100%;
+  }
+  56% {
+    margin-left: -200%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+
+
+@keyframes slide-clouds {
+  0% {
+    background-position: initial;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@keyframes animation-outline {
+  100% {
+    fill: #8BC34A;
+  }
+}
+
+@keyframes animation-fill {
+  100% {
+    fill: #2E7D32;
+  }
+}
+
+
+@keyframes blink-step {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink-step 1s steps(5, start) infinite;
+}

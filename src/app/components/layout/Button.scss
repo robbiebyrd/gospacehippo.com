@@ -1,0 +1,138 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/functions";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+/*
+ * @atom Button
+ * @section Navigation > Buttons
+ * @description
+ *  Buttons for various purposes.
+ * @modifiers
+ *  .rectangle
+ *  .square
+ *  .smaller
+ *  .{color}-light
+ *  .{color}-dark
+ * @markup
+ *   <button class="rectangle color-mercurius-dark">
+ *     <p class="color-bright-light">press</p>
+ *   </button><br>
+ *   <button class="rectangle color-terra-light">
+ *     <p class="color-dark-dark">PRESS</p>
+ *   </button><br>
+ *   <button class="rectangle smaller color-neptunius-light">
+ *     <p class="color-dark-dark">PRESS</p>
+ *   </button><br>
+ *   <button class="square color-sol-dark">
+ *     <span class="color-bright-light">P</span>
+ *   </button><br>
+ *   <button class="square color-venere-light">
+ *     <span class="color-dark-dark">P</span>
+ *   </button><br>
+ *   <button class="square smaller color-venere-light">
+ *     <span class="color-dark-dark"><i class="fa-solid fa-thumbs-up"></i></span>
+ *   </button>
+ */
+button {
+  @include typography.font-regular;
+  @include helpers.center-all;
+  @include helpers.no-border;
+  margin: 0 typography.$font-small typography.$font-small 0 !important;
+  text-transform: uppercase;
+
+  &:active {
+    z-index: 10;
+  }
+
+  span,
+  p {
+    @include helpers.no-margin-no-padding;
+    @include typography.font-mono;
+    @include typography.font-bigger;
+    @include typography.font-line-height-tight;
+  }
+
+  &.smaller {
+    span,
+    p {
+      @include typography.font-regular;
+    }
+  }
+
+  &.larger {
+    span,
+    p {
+      @include typography.font-bigger;
+    }
+  }
+
+  &.rectangle {
+    padding: typography.$font-regular / 2 typography.$font-regular;
+    min-height: typography.$font-regular * 2;
+
+    &.smaller {
+      min-height: typography.$font-regular * 1.5;
+    }
+
+    &.larger {
+      min-height: typography.$font-regular * 3;
+    }
+  }
+
+  &.square {
+    aspect-ratio: 1/1 !important;
+    padding: 0 typography.$font-regular;
+  }
+}
+
+$button-types: ("rectangle", "square");
+
+@each $button-type in $button-types {
+  @each $color in map.keys(colors.$colors) {
+    button.#{$button-type}.color-color-#{$color}, .tag-#{$button-type}.color-#{$color} {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &:active,
+      &-dark,
+      &-light:active {
+        @include functions.border($light-color, math.div(typography.$font-tiny, 2));
+        background: $dark-color;
+
+        span,
+        p {
+          color: $light-color;
+        }
+      }
+
+      &,
+      &-dark:active,
+      &-light {
+        @include functions.border($dark-color, math.div(typography.$font-tiny, 2));
+        background: $light-color;
+
+        span,
+        p {
+          color: $dark-color;
+        }
+      }
+    }
+  }
+}
+
+@keyframes blink-step {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink-step 1s steps(5, start) infinite;
+}

@@ -1,0 +1,505 @@
+@use "sass:map";
+@use "sass:math";
+@use "functions";
+@use "colors";
+@use "helpers";
+@use "typography";
+@use "vectors";
+
+fieldset {
+  margin: 0;
+  padding: typography.$font-small !important;
+  position: relative;
+
+  legend {
+    padding: typography.$font-small !important;
+    font-family: typography.$mono-font;
+    text-transform: uppercase;
+    @include typography.font-big;
+    width: 33% !important;
+    text-align: center;
+    margin-bottom: 1em;
+
+    @each $color in map.keys(colors.$colors) {
+      &.color-color-#{$color} {
+        $light-color: map.get(map.get(colors.$colors, $color), "light");
+        $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+        &-dark {
+          box-shadow: inset math.div(typography.$font-smaller, 2) math.div(typography.$font-smaller, 2) $light-color,
+          math.div(typography.$font-smaller, 2) math.div(typography.$font-smaller, 2) $light-color;
+          background-color: $dark-color;
+          color: $light-color;
+          border: math.div(typography.$font-smaller, 2) $dark-color;
+
+          &.translucent {
+            background-color: rgba($dark-color, .75);
+          }
+
+          &.glossy {
+            background-color: rgba($dark-color, .5);
+          }
+
+          &.transparent {
+            background-color: rgba($dark-color, .25);
+          }
+        }
+
+        &,
+        &-light {
+          box-shadow: inset math.div(typography.$font-smaller, 2) math.div(typography.$font-smaller, 2) $dark-color,
+          math.div(typography.$font-smaller, 2) math.div(typography.$font-smaller, 2) $dark-color;
+          background-color: $light-color;
+          color: $dark-color;
+          border: math.div(typography.$font-smaller, 2) $light-color;
+
+
+          &.translucent {
+            background-color: rgba($light-color, .75);
+          }
+
+          &.glossy {
+            background-color: rgba($light-color, .5);
+          }
+
+          &.transparent {
+            background-color: rgba($light-color, .25);
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: typography.$font-bigger;
+
+      &:last-child {
+        //clear: both;
+      }
+    }
+
+
+    li * {
+      float: right;
+      width: 80%;
+    }
+
+    li label {
+      float: left;
+      width: 20%;
+      font-family: typography.$header-font;
+      font-size: typography.$font-big;
+      font-weight: typography.$font-bold;
+    }
+  }
+
+  .transparent {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@each $color in map.keys(colors.$colors) {
+  fieldset.color-#{$color} {
+    $light-color: map.get(map.get(colors.$colors, $color), "light");
+    $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+    &-dark {
+      box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color,
+      math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color;
+      background: $dark-color;
+      border: math.div(typography.$font-tiny, 2) solid $light-color;
+      border-right: none !important;
+      border-bottom: none !important;
+
+      //legend {
+      //  background: $dark-color;
+      //  color: $light-color;
+      //  box-shadow: inset math.div(typography.$font-tiny, 4) math.div(typography.$font-tiny, 4) $light-color,
+      //  math.div(typography.$font-tiny, 4) math.div(typography.$font-tiny, 4) $light-color;
+      //  border: math.div(typography.$font-tiny, 2) $dark-color;
+      //}
+
+      label {
+        color: $light-color;
+      }
+    }
+
+    &, &-light {
+      box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color,
+      math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color;
+      background: $light-color;
+      border: math.div(typography.$font-tiny, 2) solid $dark-color;
+      border-right: none !important;
+      border-bottom: none !important;
+
+      //legend {
+      //  background: $light-color;
+      //  color: $dark-color;
+      //  box-shadow: inset math.div(typography.$font-tiny, 4) math.div(typography.$font-tiny, 4) $dark-color,
+      //  math.div(typography.$font-tiny, 4) math.div(typography.$font-tiny, 4) $dark-color;
+      //  border: math.div(typography.$font-tiny, 2) $light-color;
+      //}
+
+      label {
+        color: $dark-color;
+      }
+
+    }
+  }
+}
+
+
+/**
+ * @atom Radio Input
+ * @section Input > Buttons
+ * @description
+ *  Radio Inputs.
+ * @modifiers
+ *  .{color}-light
+ *  .{color}-dark
+ * @markup
+ *   <input class="terra" type="radio" id="checked" name="radio_styles1" value="Checked" checked="checked">
+ *   <label for="checked" class="radio-label">Checked</label>
+ *   <br>
+ *   <input class="dark" type="radio" id="disabled" name="radio_styles2" value="Disabled" disabled>
+ *   <label for="disabled" class="radio-label">Disabled</label>
+ *   <br>
+ *   <input class="neptunius" type="radio" id="unchecked" name="radio_styles1" value="Unchecked">
+ *   <label for="unchecked" class="radio-label">Unchecked</label>
+ *   <br>
+ *   <input class="sol" type="radio" id="checked_disabled" name="radio_styles4" value="Checked and Disabled" checked="checked" disabled>
+ *   <label for="checked_disabled" class="radio-label">Checked and Disabled</label>
+ */
+input[type="radio"] {
+  display: none;
+  @include helpers.no-margin-no-padding;
+  @include functions.sizer(2em, 2em);
+}
+
+/**
+ * @atom Checkbox Input
+ * @section Input > Checkbox
+ * @description
+ *  Checkboxes.
+ * @modifiers
+ *  .{color}-light
+ *  .{color}-dark
+ * @markup
+ *   <input class="venere" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+ *  <label for="vehicle1" class="radio-label"> Check Me</label>
+ */
+input[type="checkbox"] {
+  display: none;
+  @include helpers.no-margin-no-padding;
+  @include functions.sizer(2em, 2em);
+  transition: all 2s;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  font-family: typography.$mono-font;
+}
+
+input[type="radio"] + label::before,
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+  content: "";
+  display: inline-block;
+  @include functions.sizer(.75em, .75em);
+  padding-right: .25em;
+}
+
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before,
+input[type="radio"]:checked + label::before,
+input[type="checkbox"]:checked + label::before,
+input[type="radio"]:disabled + label::before,
+input[type="checkbox"]:disabled + label::before,
+input[type="radio"]:disabled + label::after,
+input[type="checkbox"]:disabled + label::after,
+input[type="radio"]:checked:disabled + label::before,
+input[type="checkbox"]:checked:disabled + label::before {
+  background-size: contain;
+  background-repeat: no-repeat !important;
+  opacity: 1;
+}
+
+label {
+  @include helpers.disable-user-select;
+  @include typography.font-mono();
+  @include typography.font-normal();
+  @include typography.font-uppercase();
+  @include typography.font-big();
+}
+
+@each $color in map.keys(colors.$colors) {
+  $light-color: map.get(map.get(colors.$colors, $color), "light");
+  $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+  input[type="radio"].#{$color} + label::before,
+  input[type="checkbox"].#{$color} + label::before {
+    @include vectors.radio_checkbox($dark-color, $light-color, scale-color($light-color, $lightness: +85%));
+  }
+
+  input[type="radio"]:checked.#{$color} + label::before {
+    @include vectors.radio_checkbox($dark-color, $dark-color, scale-color($light-color, $lightness: +25%));
+  }
+
+  input[type="checkbox"]:checked.#{$color} + label::before {
+    @include vectors.checkbox_checked($dark-color, $dark-color, scale-color($light-color, $lightness: +50%));
+  }
+
+  input[type="radio"]:disabled.#{$color} + label::before,
+  input[type="checkbox"]:disabled.#{$color} + label::before {
+    @include vectors.radio_checkbox(scale-color($dark-color, $saturation: -80%), scale-color($dark-color, $saturation: -80%), scale-color(scale-color($light-color, $saturation: -100%), $lightness: +80%))
+
+  }
+
+  input[type="radio"]:checked:disabled.#{$color} + label::before,
+  input[type="checkbox"]:checked:disabled.#{$color} + label::before {
+    @include vectors.radio_checkbox($dark-color, $dark-color, $light-color)
+
+  }
+}
+
+$text-input-types: (
+        "color",
+        "date",
+        "datetime-local",
+        "email",
+        "month",
+        "number",
+        "password",
+        "tel",
+        "text",
+        "time",
+        "url",
+        "week"
+);
+
+@each $text-input-type in $text-input-types {
+  input[type="#{$text-input-type}"] {
+    @include helpers.no-border;
+
+    font-size: typography.$font-regular;
+    font-family: typography.$paragraph-font;
+    padding: math.div(typography.$font-regular, 1);
+
+    @each $color in map.keys(colors.$colors) {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &.#{$color} {
+        box-shadow: inset 0.25em 0.25em 0 $dark-color,
+        0.25em 0.25em 0 $light-color;
+      }
+      &.#{$color}:focus {
+        box-shadow: inset 0.25em 0.25em 0 $light-color,
+        0.25em 0.25em 0 $dark-color;
+      }
+      &.#{$color} + label {
+        margin-right: typography.$font-regular;
+        margin-top: math.div(typography.$font-regular, 4);
+
+        &.dark {
+          color: $dark-color;
+        }
+
+        &.light {
+          color: $light-color;
+        }
+      }
+
+      &.#{$color}::placeholder {
+        color: scale-color($light-color, $lightness: 50%);
+      }
+
+    }
+  }
+}
+
+/**
+ * @atom Textarea
+ * @section Input > Textarea
+ * @description
+ *  Text area input.
+ * @modifiers
+ *  .{color}
+ * @markup
+ *   <textarea class="terra">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+ */
+textarea {
+  @include helpers.no-border;
+  padding: math.div(typography.$font-regular, 4);
+  font-size: typography.$font-regular;
+  font-family: typography.$paragraph-font;
+  max-width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 0.75em;
+  }
+
+  @each $color in map.keys(colors.$colors) {
+    $light-color: map.get(map.get(colors.$colors, $color), "light");
+    $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+    &.#{$color} {
+      box-shadow: inset 0.25em 0.25em 0 $dark-color,
+      0.25em 0.25em 0 $light-color;
+    }
+
+    &.#{$color}:focus {
+      box-shadow: inset 0.25em 0.25em 0 $light-color,
+      0.25em 0.25em 0 $dark-color;
+    }
+
+    &.#{$color}::-webkit-scrollbar-thumb,
+    &.#{$color}:focus::-webkit-scrollbar-corner,
+    &.#{$color}:focus::-webkit-scrollbar-track {
+      background-color: $light-color;
+    }
+
+    &.#{$color}::-webkit-scrollbar-track,
+    &.#{$color}:focus::-webkit-scrollbar-thumb,
+    &.#{$color}::-webkit-scrollbar-corner {
+      background-color: $dark-color;
+    }
+
+    &.#{$color}::-webkit-resizer {
+      @include vectors.corner_resizer($light-color, $dark-color);
+      background-size: cover;
+    }
+
+    &.#{$color}:focus::-webkit-resizer {
+      @include vectors.corner_resizer($dark-color, $light-color);
+    }
+
+    &.#{$color} + label {
+      margin-right: math.div(typography.$font-regular, 4);
+      margin-top: math.div(typography.$font-regular, 4);
+      color: $dark-color;
+    }
+
+    &.#{$color} + label.dark {
+      color: $dark-color;
+    }
+
+    &.#{$color} + label.light {
+      color: $light-color;
+    }
+
+  }
+}
+
+/**
+ * @atom Select
+ * @section Input > Select
+ * @description
+ *  Select.
+ * @modifiers
+ *  .{color}
+ * @markup
+ *  <select class="medium">
+ *      <option value="0" disabled selected>Select car:</option>
+ *      <option value="1">Audi</option>
+ *      <option value="2">BMW</option>
+ *      <option value="3">Citroen</option>
+ *  </select><br>
+ *  <select class="terra">
+ *      <option value="0" disabled selected>Select car:</option>
+ *      <option value="1">Audi</option>
+ *      <option value="2">BMW</option>
+ *      <option value="3">Citroen</option>
+ *  </select>
+ *  <select class="terra" multiple>
+ *      <option value="1">Audi</option>
+ *      <option value="2">BMW</option>
+ *      <option value="3">Citroen</option>
+ *      <option value="4">Dodge</option>
+ *      <option value="5">Jeep</option>
+ *      <option value="6">Toyota</option>
+ *  </select>
+ *  <select class="terra" multiple disabled>
+ *      <option value="1">Audi</option>
+ *  </select>
+ */
+select {
+  @each $color in map.keys(colors.$colors) {
+    $inlay-color: map.get(map.get(colors.$colors, $color), "light");
+    $outline-color: map.get(map.get(colors.$colors, $color), "dark");
+    overflow: hidden;
+    @include helpers.no-border;
+    @include typography.font-mono();
+    @include typography.font-normal();
+    @include typography.font-uppercase();
+    border-radius: 0;
+
+    &.#{$color} {
+      box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) 0 $outline-color,
+      math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) 0 $inlay-color;
+      background: scale-color($inlay-color, $lightness: +75%);
+      color: $outline-color;
+    }
+
+    &.#{$color}::-webkit-scrollbar-thumb {
+      background-color: $inlay-color;
+    }
+
+    &.#{$color}::-webkit-scrollbar-track {
+      background-color: $outline-color;
+    }
+  }
+}
+
+select,
+option {
+  @include helpers.hide-native;
+  @include typography.font-regular();
+  margin: typography.$font-smaller;
+  padding: typography.$font-tiny typography.$font-smaller;
+}
+
+select[multiple] {
+  outline: none;
+  overflow: hidden;
+}
+
+select[multiple] option {
+  margin: 0;
+}
+
+// select[multiple] option:checked {
+//   background: red;
+// }
+
+// select[multiple] option:focus {
+//   color: white;
+// }
+
+// .multiselect__content-wrapper::-webkit-scrollbar-track
+// {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//   border-radius: 10px;
+//   background-color: #F5F5F5;
+// }
+
+// .multiselect__content-wrapper::-webkit-scrollbar
+// {
+//   width: 12px;
+//   background-color: #F5F5F5;
+// }
+
+// .multiselect__content-wrapper::-webkit-scrollbar-thumb
+// {
+//   border-radius: 10px;
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+//   background-color: #555;
+// }
+
+select:disabled {
+  opacity: 0.5;
+}

@@ -1,0 +1,39 @@
+.ollie2 {
+  position: absolute;
+  margin-top: 10vh;
+  filter: blur(.125em);
+  animation: floater-animation 30s alternate infinite ease-in-out, c-anim 15s alternate infinite linear;
+  z-index: 0;
+  offset-path: path("m 11 0 c -17 -338 325 303 336 -1");
+  width: 20%;
+  will-change: all;
+}
+
+@keyframes floater-animation {
+  0% {
+    transform: rotate(0deg);
+    filter: blur(0) contrast(100%);
+    opacity: 1;
+  }
+  30% {
+    opacity: .9;
+    scale: (.9);
+    filter: blur(.1em) contrast(90%);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.25);
+    filter: blur(.3em) contrast(20%);
+    opacity: .05;
+    scale: (.5);
+  }
+}
+
+@keyframes c-anim {
+  0% {
+    offset-distance: 100%;
+  }
+  100% {
+    offset-distance: 0;
+  }
+}
+

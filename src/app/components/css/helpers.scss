@@ -1,0 +1,42 @@
+@mixin disable-user-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin no-margin() {
+  margin: 0;
+}
+
+@mixin no-padding() {
+  padding: 0;
+}
+
+@mixin no-margin-no-padding() {
+  @include no-margin;
+  @include no-padding;
+}
+
+@mixin hide-native() {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@mixin center-all() {
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin no-border() {
+  border: none;
+}
+
+@mixin force-center-div() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

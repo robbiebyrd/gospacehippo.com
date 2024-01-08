@@ -1,0 +1,90 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/functions";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+ul.item-list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  flex-flow: row wrap;
+  flex-basis: fit-content;
+
+  &.col-1 li {
+    flex-basis: 100%;
+  }
+
+  .break {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .none {
+    display: none;
+  }
+
+  .tag {
+    padding: typography.$font-tiny typography.$font-regular;
+    margin: typography.$font-small typography.$font-small 0 0;
+
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+
+    h4 {
+      font-size: 2em;
+      margin: 0;
+      padding: 0;
+      @include typography.font-mono;
+      text-transform: capitalize;
+    }
+
+    &.smaller {
+      margin: typography.$font-smaller typography.$font-small 0 0;
+      padding: typography.$font-tiny typography.$font-small;
+
+
+      h4 {
+        font-size: typography.$font-small;
+      }
+    }
+
+    @each $color in map.keys(colors.$colors) {
+      &.color-color-#{$color} {
+        $light-color: map.get(map.get(colors.$colors, $color), "light");
+        $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+        &,
+        &-light {
+          box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color,
+          math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color;
+          background: $dark-color;
+
+          span,
+          p, h1, h2, h3, h4, h5, h6 {
+            color: $light-color;
+          }
+        }
+
+        &-dark {
+          box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color,
+          math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color;
+          background: $light-color;
+
+          span,
+          p, h1, h2, h3, h4, h5, h6 {
+            color: $dark-color;
+          }
+        }
+      }
+    }
+  }
+
+
+}

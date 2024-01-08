@@ -1,0 +1,28 @@
+@keyframes bounce-lightly {
+  0% {
+    transform: translateY(-1.5vh) translateX(1.5vw) rotate(-62deg);
+  }
+  100% {
+    transform: translateY(0vh) translateX(.5vw) rotate(-66deg);
+  }
+}
+
+.ollie-holder {
+  width: 10%;
+  height: auto;
+  float: right;
+  overflow: hidden;
+  padding-top: 25vh;
+  position: absolute;
+  right: 0;
+
+  img {
+    animation: bounce-lightly 5s alternate infinite ease-in-out;
+    will-change: contents;
+    z-index: 0;
+    transform: rotate(90deg);
+    right: -1vw;
+
+  }
+}
+
