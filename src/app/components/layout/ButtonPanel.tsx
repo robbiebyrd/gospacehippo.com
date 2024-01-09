@@ -3,10 +3,11 @@
 import React, {useEffect} from "react";
 import "./ButtonPanel.scss";
 import classNames from "classnames";
-import {getColorColor as gcc, getFillColor as gfc} from "../common/Colors";
+import {getColorColor, getColorColor as gcc, getFillColor as gfc} from "../common/Colors";
 import {ReactSVG} from "react-svg";
 import Flickity from "react-flickity-component";
 import SHButton from "@/app/components/layout/Button";
+import "./HeadlineList.scss";
 
 function ButtonPanelButton(props: any) {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -54,26 +55,35 @@ function ButtonPanelButton(props: any) {
                     <div className="content">
                         <h2 className={"no-margin"}>Mission Briefing</h2>
                         <h1>{props.name}</h1>
-                        <ReactSVG
-                            src={props.image}
-                            afterInjection={(svg) => {
-                                svg.classList.add(
-                                    gfc(
-                                        props.alertColor,
-                                        props.alertShade === "light" ? "dark" : "light",
-                                    ),
-                                );
-                            }}
-                        />
-                        <div className={"pct-75"} style={{}}>
-                            <p className={"small"}>{props.content}</p>
+                        <div className={"sidebar"}>
+                            <ReactSVG
+                                src={props.image}
+                                className={"portfolio-logo"}
+                                afterInjection={(svg) => {
+                                    svg.classList.add(
+                                        gfc(
+                                            props.alertColor,
+                                            props.alertShade === "light" ? "dark" : "light",
+                                        ),
+                                    );
+                                }}
+                            />
+                            <ul className={"item-list"}>
+                                {props.specialities.map((tag: string | undefined) => (
+                                    <li className={getColorColor(props.alertColor, props.alertShade == "dark" ? "light" : "dark") + " tag smaller"}>{tag}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className={"pct-75"}>
+                            <div className={props.images.length > 0 ? "" : "big"}
+                                 dangerouslySetInnerHTML={{__html: props.content}}></div>
                             {props.images.length > 0 && (
                                 <Flickity>
                                     {props.images.map((image: string | undefined) => (
                                         <img
                                             src={image || ""}
                                             key={image}
-                                            className={"cell shadow"}
+                                            className={"cell"}
                                             alt={image || ""}
                                         />
                                     ))}
@@ -117,6 +127,7 @@ export default function ButtonPanel(props: any) {
                         contentHeader={item.contentHeader}
                         alertColor={item.color}
                         alertShade={item.shade}
+                        specialities={item.specialities}
                     />
                 ))}
             </div>

@@ -37,7 +37,7 @@ export default function Contact(props) {
                 <ArmedButton title={"LAUNCH"} color={"dark"} shade={"dark"}>
                     <form
                         action='https://forms.zohopublic.com/robbiebyrd/form/home/formperma/9nhM2EPjn2AgRtDsT7LxNMia0POd9QW0AYc2BCK5ZMc/htmlRecords/submit'
-                        name='form' id='form' method='POST' accept-charset='UTF-8' encType='multipart/form-data'>
+                        name='form' id='form' method='POST' acceptCharset='UTF-8' encType='multipart/form-data'>
                         <input type="hidden" name="zf_redirect_url" value="https://gospacehippo.com/#SignUpThankYou"/>
                         <input type="hidden" name="zc_gad" value=""/>
                         <fieldset className="color-color-medium-light">

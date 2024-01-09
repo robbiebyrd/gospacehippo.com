@@ -6,9 +6,9 @@
 @use "../css/vectors";
 
 .shadowy {
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  position: fixed;
   background: linear-gradient(180deg, black, colors.$color-dark);
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@
 
 .is-open {
   opacity: 1;
-  z-index: 200;
+  z-index: 99;
   transition: opacity .5s;
 }
 
@@ -55,12 +55,14 @@
   text-transform: uppercase;
 }
 
-
 .flickity-enabled {
   position: relative;
   height: 100%;
 
   .flickity-prev-next-button {
+    text-align: center;
+    background: none;
+    display: block;
     width: 10%;
     height: 10%;
     margin: 0;
@@ -100,7 +102,7 @@
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   width: 80%;
   height: 90%;
   display: block;
@@ -111,6 +113,12 @@
     height: 50%;
     margin: typography.$font-regular;
     position: relative;
+
+    @media (orientation: portrait) {
+      overflow: scroll !important;
+      height: 100%;
+    }
+
 
     .portfolio {
       display: flex;
@@ -171,9 +179,43 @@
     transform: rotate(180deg);
   }
 
-  svg {
+  .sidebar {
     width: 20%;
     float: right;
+    @media (orientation: portrait) {
+      float: none;
+      width: 100%;
+    }
+
+    .portfolio-logo svg {
+      @media (orientation: portrait) {
+        float: none;
+        height: 55vw !important;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+    }
+
+    ul.item-list {
+
+      margin-top: 1em;
+      justify-content: right;
+      @media (orientation: portrait) {
+        justify-content: start;
+      }
+
+
+      li {
+        width: auto;
+        font-family: typography.$mono-font;
+        text-transform: uppercase;
+        padding: .5em;
+        @media (orientation: portrait) {
+          margin: .25em;
+        }
+      }
+    }
   }
 
   @each $color in map.keys(colors.$colors) {

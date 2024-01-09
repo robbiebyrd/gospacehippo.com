@@ -506,9 +506,17 @@ h1 {
   line-height: $line-height-tight;
   margin: 2vh 0;
 
+  @media (orientation: portrait) {
+    font-size: max(9vw, 1em) !important;
+  }
+
   &.headline, & span.headline {
     font-size: $font-biggest * 1.5;
     letter-spacing: $letter-spacing-tight;
+
+    @media (orientation: portrait) {
+      font-size: max(10vw, 1em) !important;
+    }
 
   }
 
@@ -522,48 +530,48 @@ h1 {
 
 }
 
-@media (max-width: 999px) {
-  h1 {
-    font-size: $font-bigger !important;
-
-    &.headline, & span.headline {
-      font-size: $font-biggest !important;
-    }
-
-    &.subhead, &.small {
-      font-size: $font-regular !important;
-    }
-  }
-  h2 {
-    font-size: $font-big !important;
-
-    &.headline, & span.headline {
-      font-size: $font-biggest * 2 !important;
-    }
-
-    &.big {
-      font-size: $font-regular !important;
-    }
-
-    &.bigger {
-      font-size: $font-big !important;
-
-    }
-
-    &.subhead, &.small {
-      font-size: $font-regular !important;
-    }
-
-    &.smaller {
-      font-size: $font-small !important;
-    }
-
-  }
-  h3 {
-    font-size: $font-big !important;
-  }
-}
-
+//@media (max-width: 999px) {
+//  h1 {
+//    font-size: $font-bigger !important;
+//
+//    &.headline, & span.headline {
+//      font-size: $font-biggest !important;
+//    }
+//
+//    &.subhead, &.small {
+//      font-size: $font-regular !important;
+//    }
+//  }
+//  h2 {
+//    font-size: $font-big !important;
+//
+//    &.headline, & span.headline {
+//      font-size: $font-biggest * 2 !important;
+//    }
+//
+//    &.big {
+//      font-size: $font-regular !important;
+//    }
+//
+//    &.bigger {
+//      font-size: $font-big !important;
+//
+//    }
+//
+//    &.subhead, &.small {
+//      font-size: $font-regular !important;
+//    }
+//
+//    &.smaller {
+//      font-size: $font-small !important;
+//    }
+//
+//  }
+//  h3 {
+//    font-size: $font-big !important;
+//  }
+//}
+//
 
 /**
  * @atom Heading 2
@@ -574,8 +582,14 @@ h1 {
 h2 {
   @include font-thin;
   @include font-bigger;
+  @media (orientation: portrait) {
+    font-size: max(8vw, 1em) !important;
+  }
 
   &.headline {
+    @media (orientation: portrait) {
+      font-size: max(9vw, 1em) !important;
+    }
     font-size: $font-bigger * 1.5;
     letter-spacing: $letter-spacing-tight;
 
@@ -732,7 +746,11 @@ p {
     @include font-smaller;
   }
 
-  &.large {
+  &.bigger {
+    @include font-bigger;
+  }
+
+  &.large, &.big {
     @include font-big;
   }
 

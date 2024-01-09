@@ -30,14 +30,12 @@ export default function ExplorationAgency(props) {
           </span>
                     &nbsp; agency.
                 </h1>
-                <h2 className={"pct-75 color-color-light-light"}>
+                <h2 className={"pct-75 color-color-light-light no-margin"}>
                     We&rsquo;re here for
                     <br/> &rdquo;it&rsquo;s never been done.&ldquo;
                 </h2>
                 <p className={"pct-75 color-color-light-light"}>
                     Our team excels at creating new products and elevating existing ones.
-                </p>
-                <p className={"pct-75 color-color-light-light small"}>
                     We have years of experience in producing products and campaigns across
                     all kinds of business domains. We&rsquo;ve worked with everyone from
                     recoring legends to fast-food titans because we love to explore.

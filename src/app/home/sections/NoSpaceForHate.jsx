@@ -41,7 +41,7 @@ export default function NoSpaceForHate(props) {
               space
             </span>{" "}
                         for{" "}
-                        <span className="color-text-gradient-mercurius-light-to-light-light">
+                        <span className="color-text-gradient-medium-light-to-light-light">
               hate
             </span>
                         .

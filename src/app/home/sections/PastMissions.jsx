@@ -20,18 +20,18 @@ export default function PastMissions(props) {
                     items={[
                         {
                             name: "Whole Foods",
-                            image: "img/logos/logo-wfm.svg",
+                            image: "/img/logos/logo-wfm.svg",
                             color: "terra",
                             shade: "dark",
                             content:
-                                "Whole Foods Market is more than open about the all ingredients in its products, but not everyone knows about all the ingredients it keeps out. " +
+                                "<p>Whole Foods Market is more than open about the all ingredients in its products, but not everyone knows about all the ingredients it keeps out. " +
                                 "That's why Whole Foods asked Space Hippo Engineers to help develop a visual campaign and web portal to help consumers and manufacturers " +
-                                " better understand their ingredient standards.",
+                                " better understand their ingredient standards.</p>",
                             categories: ["retail"],
                             images: [
-                                "https://robbiebyrd.com/img/rock4.png",
-                                "https://robbiebyrd.com/img/rock6.png",
-                                "https://robbiebyrd.com/img/rock5.png",
+                                "/img/past-missions/rock4.png",
+                                "/img/past-missions/rock6.png",
+                                "/img/past-missions/rock5.png",
                             ],
                             specialities: [
                                 "Wordpress",
@@ -43,11 +43,19 @@ export default function PastMissions(props) {
                         },
                         {
                             name: "Space Hippo",
-                            image: "img/logos/logo-sh-full.svg",
+                            image: "/img/logos/logo-sh-full.svg",
                             color: "medium",
                             shade: "dark",
-                            content: "Coming soon...",
-                            images: [],
+                            content: "<p>We don't pick favorites, but we might be our own favorite client. Space Hippo is aspirational, whimsical and futuristicly retro, a brand identity we developed from scratch.</p><p><a href='https://gospacehippo.com/rsrc/space-hippo-2024-brand-navigation.pdf'>Download a copy of Space Hippo’s Brand Navigation Handbook.</a></p>",
+                            images: [
+                                "/img/past-missions/shbg1.png",
+                                "/img/past-missions/shbg2.png",
+                                "/img/past-missions/shbg3.png",
+                                "/img/past-missions/shbg4.png",
+                                "/img/past-missions/shbg5.png",
+                                "/img/past-missions/shbg6.png",
+                                "/img/past-missions/shbg7.png",
+                            ],
                             categories: ["agency"],
                             specialities: [
                                 "Wordpress",
@@ -58,21 +66,21 @@ export default function PastMissions(props) {
                         },
                         {
                             name: "Level Home",
-                            image: "img/logos/logo-level.svg",
+                            image: "/img/logos/logo-level.svg",
                             color: "light",
                             shade: "dark",
                             content:
-                                "Staring a new enterprise is hard; relaunching an existing one is even harder. After acquiring a new divison, Level Home was ready to go from providing secuirty to homeowners to securing large apartment complexes for millions of residents.",
+                                "<p>Staring a new enterprise is hard; relaunching an existing one is even harder. After acquiring a new divison, Level Home was ready to go from providing secuirty to homeowners to securing large apartment complexes for millions of residents.</p>",
                             categories: ["iot"],
                             images: [],
                             specialities: ["Development", "The Cloud", "Internet of Things"],
                         },
                         {
                             name: "Shawn Mendes",
-                            image: "img/logos/logo-shawn-mendes.svg",
+                            image: "/img/logos/logo-shawn-mendes.svg",
                             color: "venere",
                             shade: "dark",
-                            content: "",
+                            content: "<p>Coming Soon...</p>",
                             images: [],
                             categories: ["entertainment"],
                             specialities: [
@@ -87,9 +95,9 @@ export default function PastMissions(props) {
                             name: "Hallmark",
                             color: "neptunius",
                             shade: "dark",
-                            content: "Coming soon...",
+                            content: "<p>Coming Soon...</p>",
                             images: [],
-                            image: "img/logos/logo-hallmark.svg",
+                            image: "/img/logos/logo-hallmark.svg",
                             categories: ["ecommerce"],
                             specialities: [
                                 "Development",
@@ -101,10 +109,10 @@ export default function PastMissions(props) {
                         },
                         {
                             name: "Nexstar",
-                            image: "img/logos/logo-nexstar.svg",
+                            image: "/img/logos/logo-nexstar.svg",
                             color: "mercurius",
                             shade: "dark",
-                            content: "Coming soon...",
+                            content: "<p>Coming Soon...</p>",
                             images: [],
                             categories: ["media"],
                             specialities: [
@@ -119,19 +127,24 @@ export default function PastMissions(props) {
                             name: "Taco Bell",
                             color: "medium",
                             shade: "dark",
-                            image: "img/logos/logo-taco-bell.svg",
-                            content: "Coming soon...",
+                            image: "/img/logos/logo-taco-bell.svg",
+                            content: "<p>Coming Soon...</p>",
                             images: [],
                             categories: ["ecommerce"],
                             specialities: ["Development", "Martech", "The Cloud"],
                         },
                         {
                             name: "Texas Lottery",
-                            image: "img/logos/logo-texas-lottery.svg",
+                            image: "/img/logos/logo-texas-lottery.svg",
                             color: "sol",
                             shade: "dark",
-                            content: "Coming soon...",
-                            images: [],
+                            content: "<p>Coming Soon...</p>",
+                            images: [
+                                "/img/past-missions/txbingo1.png",
+                                "/img/past-missions/txbingo2.png",
+                                "/img/past-missions/txbingo3.png",
+                                "/img/past-missions/txbingo4.png",
+                            ],
                             categories: ["entertainment"],
                             specialities: ["CMS/DXP", "Branding", "Digital Design"],
                         },
@@ -139,7 +152,7 @@ export default function PastMissions(props) {
                             name: "Vitalant",
                             color: "medium",
                             shade: "light",
-                            image: "img/logos/logo-vitalant.svg",
+                            image: "/img/logos/logo-vitalant.svg",
                             content: "Coming soon...",
                             images: [],
                             categories: ["non-profit", "healthcare"],
@@ -154,9 +167,11 @@ export default function PastMissions(props) {
                             name: "Keeping History",
                             color: "light",
                             shade: "dark",
-                            image: "img/logos/logo-kh.svg",
-                            content: "Coming soon...",
-                            images: [],
+                            image: "/img/logos/logo-kh.svg",
+                            content: "<p>Keeping History is an OSS initiative to preserve, categorize and analyze history through multimedia. Keeping History is developing a state-of-the-art system to help researchers archive digital media, and utilize machine learning to gain new insights into their archives. Space Hippo Engineers are active in this project.</p>",
+                            images: [
+                                "/img/past-missions/kh.png"
+                            ],
                             categories: ["non-profit"],
                             specialities: [
                                 "MarTech",
