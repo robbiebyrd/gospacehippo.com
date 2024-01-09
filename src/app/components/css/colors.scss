@@ -304,27 +304,3 @@ $colors: (
 blockquote {
   @include color-modifiers('background-color', '.', "-", .5);
 }
-
-
-/** Export colors for use in Javascript components */
-:export {
-  neptuniusDark: $color-neptunius-dark;
-  neptuniusLight: $color-neptunius-light;
-  venereDark: $color-venere-dark;
-  venereLight: $color-venere-light;
-  terraDark: $color-terra-dark;
-  terraLight: $color-terra-light;
-  solDark: $color-sol-dark;
-  solLight: $color-sol-light;
-  mercuriusDark: $color-mercurius-dark;
-  mercuriusLight: $color-mercurius-light;
-  lightDark: $color-giove;
-  lightLight: $color-bright;
-  mediumDark: $color-tethys-dark;
-  mediumLight: $color-giove;
-  brightDark: $color-giove;
-  brightLight: $color-tethys-light;
-  darkDark: $color-dark;
-  darkLight: $color-tethys-dark;
-}
-

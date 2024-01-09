@@ -9,8 +9,8 @@
 
 header {
   display: grid;
+  justify-content: center;
   grid-template-columns: 1fr 8fr 1fr;
-  grid-template-rows: 100px;
   position: fixed;
   margin: 0;
   top: 0;
@@ -18,9 +18,11 @@ header {
   z-index: 7;
   opacity: 1;
   padding: 0;
+  z-index: 99;
 
   @media (orientation: portrait) {
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
+    background-image: linear-gradient(to bottom, colors.$color-dark 25%, rgba(0, 0, 0, 0) 75%);
   }
 
   &.overlay {
@@ -29,9 +31,9 @@ header {
 
   .header-holder {
     grid-area: 1 / 1 / 1 / 2;
-    margin: 1vw;
 
     svg {
+      margin: .75em;
 
     }
   }

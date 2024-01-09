@@ -16,15 +16,18 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  display: block;
   opacity: .4;
-  will-change: all;
+  will-change: auto;
   filter: blur(0.125vw);
-  animation: ease-in 5s moon-fade-in-animation;
+  animation-name: moon-fade-in-animation;
+  animation-duration: 5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   z-index: 0;
-  overflow: hidden;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   & div.moon-holder {
     right: -50vw;
@@ -43,11 +46,12 @@
   }
 
   div.holder {
-    transition: all 1s;
+    transition: all 1.5s;
     z-index: -1 !important;
 
     img {
       z-index: -1 !important;
+      mix-blend-mode: luminosity;
     }
   }
 

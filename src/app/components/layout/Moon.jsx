@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import CrossfadeImage from "react-crossfade-image";
 import "./Moon.scss";
 
@@ -9,6 +9,29 @@ export default function Moon(props) {
     const [currentPosition, currentPositionSet] = useState(0);
     const defaultSpeed = 1000;
     const totalShadows = 3;
+
+    function countDigits(imgs) {
+        var c = 0;
+        while (imgs > 0) {
+            imgs = Math.floor(imgs / 10);
+            c++;
+        }
+        return c;
+    }
+
+    // if (props.imageTotal > 5) {
+    //     for (let i = 0; i < 5; i++) {
+    //         const newImg = new Image();
+    //         newImg.src =
+    //             "img/" +
+    //             props.imageDirectory +
+    //             "/" +
+    //             (i + 1)
+    //                 .toString()
+    //                 .padStart(countDigits(props.imageTotal), "0") +
+    //             ".png";
+    //     }
+    // }
 
     const handleScroll = () => {
         const scrollPosition = window.scrollY; // => scroll position
@@ -21,14 +44,17 @@ export default function Moon(props) {
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-        const newImg = new Image();
-        newImg.src =
-            "img/" +
-            props.imageDirectory +
-            "/" +
-            (currentImage + 2).toString().padStart(4, "0") +
-            ".png";
-
+        if (props.imageTotal > 5) {
+            const newImg = new Image();
+            newImg.src =
+                "img/" +
+                props.imageDirectory +
+                "/" +
+                (currentImage + 5)
+                    .toString()
+                    .padStart(countDigits(props.imageTotal), "0") +
+                ".png";
+        }
         setTimeout(() => {
             if (currentImage > props.imageTotal - 1) {
                 currentImageSet(1);
@@ -45,19 +71,22 @@ export default function Moon(props) {
         <div className="moon">
             <div
                 className={"moon-holder"}
-                style={{opacity: 1 - Math.sin(currentPosition)}}
+                style={{ opacity: 1 - Math.sin(currentPosition) }}
             >
                 <CrossfadeImage
                     src={
                         "img/" +
                         props.imageDirectory +
                         "/" +
-                        currentImage.toString().padStart(4, "0") +
+                        currentImage
+                            .toString()
+                            .padStart(countDigits(props.imageTotal), "0") +
                         ".png"
                     }
                     duration={props.speed || defaultSpeed}
                     containerClass={
-                        "holder shadow-" + (Math.floor(Math.random() * totalShadows) + 1)
+                        "holder shadow-" +
+                        (Math.floor(Math.random() * totalShadows) + 1)
                     }
                     timingFunction={"linear"}
                 />

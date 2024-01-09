@@ -1,0 +1,24 @@
+
+@use "colors";
+
+/** Export colors for use in Javascript components */
+:export {
+  neptuniusDark: colors.$color-neptunius-dark;
+  neptuniusLight: colors.$color-neptunius-light;
+  venereDark: colors.$color-venere-dark;
+  venereLight: colors.$color-venere-light;
+  terraDark: colors.$color-terra-dark;
+  terraLight: colors.$color-terra-light;
+  solDark: colors.$color-sol-dark;
+  solLight: colors.$color-sol-light;
+  mercuriusDark: colors.$color-mercurius-dark;
+  mercuriusLight: colors.$color-mercurius-light;
+  lightDark: colors.$color-giove;
+  lightLight: colors.$color-bright;
+  mediumDark: colors.$color-tethys-dark;
+  mediumLight: colors.$color-giove;
+  brightDark: colors.$color-giove;
+  brightLight: colors.$color-tethys-light;
+  darkDark: colors.$color-dark;
+  darkLight: colors.$color-tethys-dark;
+}

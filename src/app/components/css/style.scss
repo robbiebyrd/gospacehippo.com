@@ -166,17 +166,17 @@ a {
   width: 100%;
   height: 100%;
   background-image: url("/img/clouds.png");
-  background-position: right;
+  background-position: right center;
   background-repeat: repeat-x;
   background-size: auto 100vh;
   opacity: 1;
-  filter: contrast(200%);
   animation: 125s linear infinite slide-clouds;
   z-index: 0;
 }
 
 .image-background-clouds::before {
   position: absolute;
+  margin-top: -25%;
   width: 100%;
   height: 100%;
   background-image: url("/img/clouds.png");
@@ -185,10 +185,8 @@ a {
   background-size: cover;
   opacity: 1;
   transform: rotateY(180deg);
-  animation: 95s linear infinite reverse slide-clouds;
+  animation: 200s linear infinite reverse slide-clouds;
   content: ' ';
-  filter: contrast(200%);
-  margin-top: 25%;
   z-index: 0;
 }
 
@@ -196,13 +194,13 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
+  margin-top: 25%;
   background-image: url("/img/clouds.png");
   background-position: left bottom;
   background-repeat: repeat-x;
   background-size: cover;
   opacity: 1;
-  transform: rotateX(180deg);
-  animation: 30s linear infinite slide-clouds;
+  animation: 90s linear infinite slide-clouds;
   content: ' ';
   z-index: 0;
 }
