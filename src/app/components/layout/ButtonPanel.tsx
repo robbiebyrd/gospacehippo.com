@@ -70,7 +70,8 @@ function ButtonPanelButton(props: any) {
                             />
                             <ul className={"item-list"}>
                                 {props.specialities.map((tag: string | undefined) => (
-                                    <li className={getColorColor(props.alertColor, props.alertShade == "dark" ? "light" : "dark") + " tag smaller"}>{tag}</li>
+                                    <li key={tag}
+                                        className={getColorColor(props.alertColor, props.alertShade == "dark" ? "light" : "dark") + " tag smaller"}>{tag}</li>
                                 ))}
                             </ul>
                         </div>
