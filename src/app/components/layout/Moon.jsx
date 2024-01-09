@@ -19,20 +19,6 @@ export default function Moon(props) {
         return c;
     }
 
-    // if (props.imageTotal > 5) {
-    //     for (let i = 0; i < 5; i++) {
-    //         const newImg = new Image();
-    //         newImg.src =
-    //             "img/" +
-    //             props.imageDirectory +
-    //             "/" +
-    //             (i + 1)
-    //                 .toString()
-    //                 .padStart(countDigits(props.imageTotal), "0") +
-    //             ".png";
-    //     }
-    // }
-
     const handleScroll = () => {
         const scrollPosition = window.scrollY; // => scroll position
         const height = Math.max(
@@ -44,7 +30,7 @@ export default function Moon(props) {
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-        if (props.imageTotal > 5) {
+        if (props.imageTotal > 5 && currentImage + 5 < props.imageTotal) {
             const newImg = new Image();
             newImg.src =
                 "img/" +

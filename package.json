@@ -9,6 +9,17 @@
     "lint": "next lint",
     "deploy": "./deploy.sh"
   },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "prettier": {
+    "tabWidth": 4
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals"
+    ]
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
