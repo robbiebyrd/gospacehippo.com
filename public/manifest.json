@@ -1,6 +1,7 @@
 {
   "short_name": "Space Hippo",
-  "name": "An Exploration Agency",
+  "name": "Space Hippo, An Exploration Agency",
+  "description": "We're a boutique digital design and marketing agency using beautiful visuals and custom-built technology to help marketers technologists reach new heights.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
+  "start_url": "/",
+  "display": "browser",
   "theme_color": "#404040",
   "background_color": "#404040"
 }
