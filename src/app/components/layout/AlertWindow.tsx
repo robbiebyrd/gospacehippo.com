@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import {getColorColor as gcc} from "../common/Colors";
 import React, {useEffect} from "react";
+import './ButtonPanel.scss';
 
 export default function AlertWindow(props: {
     name: string;
@@ -31,7 +32,7 @@ export default function AlertWindow(props: {
         <div
             id={props.name.toLowerCase().split(" ").join("_") + "-window"}
             className={classNames(
-                "shadowy",
+                "popup",
                 isOpen || props.alwaysOpen ? "is-open" : "is-closed"
             )}
         >

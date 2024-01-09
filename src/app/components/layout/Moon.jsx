@@ -26,7 +26,7 @@ export default function Moon(props) {
             "img/" +
             props.imageDirectory +
             "/" +
-            (currentImage + 1).toString().padStart(4, "0") +
+            (currentImage + 2).toString().padStart(4, "0") +
             ".png";
 
         setTimeout(() => {

@@ -6,7 +6,7 @@
 @use "../css/vectors";
 
 .shadowy {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(180deg, black, colors.$color-dark);
@@ -61,22 +61,29 @@
 
   .flickity-prev-next-button {
     text-align: center;
-    background: none;
+    background: rgba(0, 0, 0, .2);
     display: block;
-    width: 10%;
-    height: 10%;
-    margin: 0;
-    padding: 0;
+    padding: 2em 1em;
+    margin: 0 !important;
     top: 50%;
+    height: 2em;
 
     &.next {
       position: absolute;
       right: 0;
+
+      .flickity-button-icon {
+        height: 1em;
+      }
     }
 
     &.previous {
       position: absolute;
       left: 0;
+
+      .flickity-button-icon {
+        height: 1em;
+      }
     }
   }
 

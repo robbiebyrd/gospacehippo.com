@@ -25,11 +25,19 @@ import WeAreSpaceHippoAgain from "@/app/home/sections/WeAreSpaceHippoAgain";
 import Bye from "@/app/home/sections/Bye";
 import HowWeEngage from "@/app/home/sections/HowWeEngage";
 import PardonOurStardust from "@/app/home/sections/PardonOurStardust";
+import SignUpThankYou from "@/app/home/sections/SignUpThankYou";
 
 export default async function Home() {
     return (
         <>
-            <Moon speed={500} imageDirectory={"moon-rotate"} imageTotal={1350}/>
+            <Moon speed={800} imageDirectory={"moon-rotate"} imageTotal={1350}/>
+            <SignUpThankYou gradient={{
+                cStart: "dark",
+                csStart: "dark",
+                cEnd: "dark",
+                csEnd: "dark",
+            }}
+            ></SignUpThankYou>
             <SpaceIsForAll
                 gradient={{
                     cStart: "dark",
