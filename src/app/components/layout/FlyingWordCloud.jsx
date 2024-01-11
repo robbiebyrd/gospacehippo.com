@@ -1,44 +1,33 @@
+import * as classNames from "classnames";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import * as classNames from "classnames";
-import {getColorColor as gcc} from "../common/Colors";
+import { getColorColor as gcc } from "../common/Colors";
 import "./FlyingWordCloud.scss";
 
 export default function FlyingWordCloud(props) {
-    function shuffleArray(array) {
-        let currentIndex = array.length,
-            randomIndex;
+    function shuffleItems(a) {
+        let c = a.length,
+            r;
 
-        // While there remain elements to shuffle.
-        while (currentIndex > 0) {
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
+        while (c > 0) {
+            r = Math.floor(Math.random() * c);
+            c--;
 
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex],
-                array[currentIndex],
-            ];
+            [a[c], a[r]] = [a[r], a[c]];
         }
 
-        return array;
+        return a;
     }
 
-    const itemsShuffled = shuffleArray(props.items);
-    const classSizeMaps = [
-        "smaller",
-        "small",
-        "big",
-        "bigger",
-        "headline"
-    ];
+    const itemsShuffled = shuffleItems(props.items);
+    const classSizeMaps = ["smaller", "small", "big", "bigger", "headline"];
+
     return (
-        <>
+        <div id={props.id} className={props.className} style={props.style}>
             {itemsShuffled.map((word, i) => (
                 <Marquee
                     key={i}
-                    speed={Math.floor(Math.random() * 40) + 40}
+                    speed={Math.floor(Math.random() * 100) + (i % 4)}
                     style={{
                         width: "100%",
                         position: "absolute",
@@ -51,12 +40,15 @@ export default function FlyingWordCloud(props) {
                             animationName: "faded",
                             animationDirection: "alternate",
                             animationIterationCount: "infinite",
-                            animationDuration: Math.floor(Math.random() * 100) * (i % 4) + "s",
-                            marginTop: "" + (Math.floor(Math.random() * 80)) + "vh",
-                            marginLeft: "" + (Math.floor(Math.random() * 100)) + "vw",
+                            animationDuration:
+                                Math.floor(Math.random() * 100) * (i % 8) + "s",
+                            marginTop:
+                                "" + Math.floor(Math.random() * 80) + "vh",
+                            marginLeft:
+                                "" + Math.floor(Math.random() * 100) + "vw",
                         }}
                         className={classNames(
-                            String(classSizeMaps[i % 4]),
+                            String(classSizeMaps[i % 5]),
                             gcc(props.color, props.shade),
                         )}
                     >
@@ -64,6 +56,6 @@ export default function FlyingWordCloud(props) {
                     </h2>
                 </Marquee>
             ))}
-        </>
+        </div>
     );
 }

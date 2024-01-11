@@ -62,9 +62,8 @@ html {
   overflow: hidden;
   display: block;
   z-index: 2;
-  min-width: 100vw;
-  min-height: 100vh;
   will-change: contents;
+  opacity: 0.4;
 
   svg {
     left: 50vw;

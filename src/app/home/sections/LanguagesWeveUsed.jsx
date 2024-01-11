@@ -1,8 +1,8 @@
+import FlyingWordCloud from "@/app/components/layout/FlyingWordCloud";
+import React from "react";
+import { getColorColor as gcc } from "../../components/common/Colors";
 import Section from "../../components/layout/Section";
 import SectionLayout from "../../components/layout/SectionLayout";
-import {getColorColor as gcc} from "../../components/common/Colors";
-import React from "react";
-import FlyingWordCloud from "@/app/components/layout/FlyingWordCloud";
 import "./LanguagesWeveUsed.scss";
 
 async function getData() {
@@ -18,7 +18,7 @@ export default async function LanguagesWeveUsed(props) {
     return (
         <Section
             id="LanguagesWeveUsed"
-            color={{color: props.color, shade: props.shade}}
+            color={{ color: props.color, shade: props.shade }}
             gradient={props.gradient}
         >
             <SectionLayout layout={22}>
@@ -28,13 +28,12 @@ export default async function LanguagesWeveUsed(props) {
                 </h3>
             </SectionLayout>
             <SectionLayout layout={"almost-all-3"}>
-                <div id={"wordcloud-contain"}>
-                    <FlyingWordCloud
-                        color={"sol"}
-                        shade={"light"}
-                        items={languages}
-                    ></FlyingWordCloud>
-                </div>
+                <FlyingWordCloud
+                    id={"wordcloud-contain"}
+                    color={"sol"}
+                    shade={"light"}
+                    items={languages}
+                ></FlyingWordCloud>
             </SectionLayout>
         </Section>
     );

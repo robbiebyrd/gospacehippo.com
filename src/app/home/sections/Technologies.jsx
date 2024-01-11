@@ -1,12 +1,12 @@
 "use client";
 
+import * as classNames from "classnames";
+import React from "react";
+import { getColorColor as gcc } from "../../components/common/Colors";
+import SHButton from "../../components/layout/Button";
+import HeadlineList from "../../components/layout/HeadlineList";
 import Section from "../../components/layout/Section";
 import SectionLayout from "../../components/layout/SectionLayout";
-import {getColorColor as gcc} from "../../components/common/Colors";
-import React from "react";
-import * as classNames from "classnames";
-import HeadlineList from "../../components/layout/HeadlineList";
-import SHButton from "../../components/layout/Button";
 import "./Technologies.scss";
 
 const cn = classNames;
@@ -16,7 +16,7 @@ export default function Technologies(props) {
         <>
             <Section
                 id="Technologies"
-                color={{color: props.color, shade: props.shade}}
+                color={{ color: props.color, shade: props.shade }}
                 gradient={props.gradient}
             >
                 <SectionLayout layout={1}>
@@ -45,6 +45,7 @@ export default function Technologies(props) {
                         </li>
                         <li key={"programming-languages"}>
                             <HeadlineList
+                                id={"programming-languages-list"}
                                 tag={true}
                                 color="terra"
                                 shade="light"
@@ -82,6 +83,7 @@ export default function Technologies(props) {
                         </li>
                         <li key={"frameworks"}>
                             <HeadlineList
+                                id={"frameworks-list"}
                                 tag={true}
                                 color="sol"
                                 shade="dark"
@@ -116,6 +118,7 @@ export default function Technologies(props) {
                         </li>
                         <li key={"technologies"}>
                             <HeadlineList
+                                id={"technologies-list"}
                                 tag={true}
                                 color="neptunius"
                                 shade="dark"
@@ -138,7 +141,13 @@ export default function Technologies(props) {
                             />
                         </li>
                     </ul>
-                    <div style={{width: "100%", textAlign: "center", margin: "35% 0"}}>
+                    <div
+                        style={{
+                            width: "100%",
+                            textAlign: "center",
+                            margin: "35% 0",
+                        }}
+                    >
                         <a
                             id={"ExplorationAgencyAndMore"}
                             href={"/#ExplorationAgency"}
