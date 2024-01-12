@@ -1,9 +1,9 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as classNames from "classnames";
 import React from "react";
-import { getColorColor as gcc } from "../../components/common/Colors";
+import {getColorColor as gcc} from "../../components/common/Colors";
 import Section from "../../components/layout/Section";
 
 const cn = classNames;
@@ -13,14 +13,14 @@ export default function NoSpaceForHate(props) {
         <>
             <Section
                 id="NoSpaceForHate"
-                color={{ color: props.color, shade: props.shade }}
+                color={{color: props.color, shade: props.shade}}
                 gradient={props.gradient}
             >
                 <div speed={1} className="globe-background-holder">
                     <FontAwesomeIcon
                         icon="fa-solid fa-ban"
                         fontSize={"110vh"}
-                        style={{ backgroundClip: "text" }}
+                        style={{backgroundClip: "text"}}
                         className={cn(gcc("mercurius", "dark"))}
                     />
                 </div>
@@ -35,21 +35,21 @@ export default function NoSpaceForHate(props) {
                 >
                     <h1 className="color-color-dark-dark headline">
                         No{" "}
-                        <span className="color-text-gradient-mercurius-dark-to-dark-dark">
+                        <span className="color-text-gradient-dark-dark-to-dark-light shadow">
                             space
                         </span>{" "}
                         for{" "}
-                        <span className="color-text-gradient-medium-light-to-light-light">
+                        <span className="color-text-gradient-medium-light-to-light-light shadow">
                             hate
                         </span>
                         .
                     </h1>
-                    <p className="color-color-light-light extra-margin">
+                    <p className="color-color-light-light extra-margin shadow">
                         We believe that freedom of speech is core to a healthy
                         democracy. We also believe that discrimination is
                         abhorrent and a direct threat to both those principles.
                     </p>
-                    <p className="body color-color-light-light extra-margin ">
+                    <p className="body color-color-light-light extra-margin shadow">
                         The US Supreme Court&rsquo;s decision in{" "}
                         <i>
                             <a
@@ -65,7 +65,7 @@ export default function NoSpaceForHate(props) {
                         another signal of the court&rsquo;s indifference and
                         intolerance.
                     </p>
-                    <p className="body color-color-light-light extra-margin ">
+                    <p className="body color-color-light-light extra-margin shadow">
                         If{" "}
                         <a
                             className="color-venere-light font"

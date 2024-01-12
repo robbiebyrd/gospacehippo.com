@@ -1,13 +1,13 @@
 "use client";
 
-import Section from "../../components/layout/Section";
-import SectionLayout from "../../components/layout/SectionLayout";
-import {getColorColor as gcc} from "../../components/common/Colors";
-import React from "react";
-import * as classNames from "classnames";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlanetRinged} from "@fortawesome/pro-solid-svg-icons";
 import {faRocket} from "@fortawesome/pro-thin-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import * as classNames from "classnames";
+import React from "react";
+import {getColorColor as gcc} from "../../components/common/Colors";
+import Section from "../../components/layout/Section";
+import SectionLayout from "../../components/layout/SectionLayout";
 import "./HowWeEngage.scss";
 
 const cn = classNames;
@@ -35,9 +35,9 @@ export default function HowWeEngage(props) {
                     </p>
                 </SectionLayout>
                 <SectionLayout width={100}>
-                    <SectionLayout className={"floatings"}>
-                        <aside className={"color-color-dark-dark contrast"}>
-                            <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                    <SectionLayout className={cn("floatings")}>
+                        <aside className={cn("color-color-dark-dark", "contrast")}>
+                            <h3 className={cn("no-margin")}>
                                 <FontAwesomeIcon icon={faRocket}></FontAwesomeIcon> Booster
                             </h3>
                             <h4>Hourly</h4>
@@ -61,17 +61,17 @@ export default function HowWeEngage(props) {
                                 <li>Campaigns</li>
                             </ul>
                         </aside>
-                        <aside className={"color-color-medium-light"}>
-                            <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                        <aside className={cn("color-color-medium-light", "contrast")}>
+                            <h3 className={cn("no-margin")}>
                                 <FontAwesomeIcon icon={faPlanetRinged}></FontAwesomeIcon>{" "}
                                 Explorer
                             </h3>
                             <h4>Mission Contract + Flight Credits</h4>
-                            <p className={cn(gcc("dark", "dark"))}>
+                            <p>
                                 You need a trusted, long-term digital partner to help you
                                 navigate the vast expanse.
                             </p>
-                            <p className={cn("small", gcc("dark", "dark"))}>
+                            <p className={cn("small")}>
                                 Our Explorer clients engage with us for a year or more. During
                                 this time, we listen to your needs and develop a plan to help
                                 you get there. We provide a full plan over the course of our

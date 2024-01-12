@@ -1,12 +1,12 @@
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Footer.scss";
 import {getBgColor as gbc} from "../common/Colors";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function Footer(props) {
     return (
         <footer className={gbc(props.color || "light", props.shade || "light")}>
-            <aside className={"color-color-dark-light footer-list contrast"}>
+            <aside className={"color-color-dark-light footer-list"}>
                 <ul>
                     <li>
                         <a className="color-color-venere-light" href="tel:+1618-464-4776">

@@ -1,14 +1,14 @@
 "use client";
 
-import Section from "../../components/layout/Section";
-import SectionLayout from "../../components/layout/SectionLayout";
-import {getColorColor as gcc} from "../../components/common/Colors";
-import React from "react";
-import * as classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlaneCircleCheck} from "@fortawesome/sharp-light-svg-icons";
-import {faWindowRestore} from "@fortawesome/sharp-solid-svg-icons";
 import {faPlaneDeparture, faPlanetMoon,} from "@fortawesome/sharp-regular-svg-icons";
+import {faWindowRestore} from "@fortawesome/sharp-solid-svg-icons";
+import * as classNames from "classnames";
+import React from "react";
+import {getColorColor as gcc} from "../../components/common/Colors";
+import Section from "../../components/layout/Section";
+import SectionLayout from "../../components/layout/SectionLayout";
 
 const cn = classNames;
 
@@ -36,7 +36,7 @@ export default function MissionChecklist(props) {
                         long-range mission plan, and hone each milestone as we go.
                     </p>
                     <SectionLayout columns={2}>
-                        <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                        <h3 className={cn(gcc("dark", "dark"), "no-margin")}>
                             <FontAwesomeIcon icon={faPlaneCircleCheck}></FontAwesomeIcon>{" "}
                             Flight Plan
                         </h3>
@@ -46,7 +46,7 @@ export default function MissionChecklist(props) {
                             metrics, budget, resources and timelines and define key markers to
                             measure success from mission begin to end.{" "}
                         </p>
-                        <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                        <h3 className={cn(gcc("dark", "dark"), "no-margin")}>
                             <FontAwesomeIcon icon={faWindowRestore}></FontAwesomeIcon>{" "}
                             Development
                         </h3>
@@ -56,7 +56,7 @@ export default function MissionChecklist(props) {
                             Adhering to agile software practices, we brainstorm and test all
                             throughout the development process.
                         </p>
-                        <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                        <h3 className={cn(gcc("dark", "dark"), "no-margin")}>
                             <FontAwesomeIcon icon={faPlaneDeparture}></FontAwesomeIcon> Test
                             Flights
                         </h3>
@@ -65,7 +65,7 @@ export default function MissionChecklist(props) {
                             We will test every component of your mission, using automation and
                             manual testing to maintain a 100% success rate.
                         </p>
-                        <h3 className={cn(gcc("dark", "light"), "no-margin")}>
+                        <h3 className={cn(gcc("dark", "dark"), "no-margin")}>
                             <FontAwesomeIcon icon={faPlanetMoon}></FontAwesomeIcon> Liftoff
                         </h3>
                         <p className={cn("small", gcc("dark", "dark"))}>

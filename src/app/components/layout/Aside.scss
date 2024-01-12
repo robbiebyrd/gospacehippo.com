@@ -23,10 +23,6 @@ aside {
         color: $light-color;
         transition: all .2s;
 
-        & * {
-          color: $light-color;
-        }
-
         &.contrast * {
           color: colors.$color-bright;
         }
@@ -50,13 +46,8 @@ aside {
         background-color: $light-color;
         color: $dark-color;
 
-        & * {
-          color: $dark-color;
-
-        }
-
         &.contrast * {
-          color: colors.$color-bright;
+          color: colors.$color-dark;
         }
 
         &.translucent {

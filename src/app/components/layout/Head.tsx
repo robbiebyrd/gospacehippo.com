@@ -1,10 +1,10 @@
 "use client";
 
+import classNames from "classnames";
 import React, {useEffect} from "react";
 import {ReactSVG} from "react-svg";
 import "./ButtonPanel.scss";
 import {getFillColor as gfc} from "../common/Colors";
-import classNames from "classnames";
 import "./Head.scss";
 
 function Head() {
@@ -77,7 +77,7 @@ function Head() {
                 <ReactSVG
                     src={isOpen ? "img/bars.svg" : "img/globe.svg"}
                     onClick={openToggle}
-                    className={classNames(gfc(isOpen ? "light" : "light", "light"))}
+                    className={classNames("shadow", gfc(isOpen ? "light" : "light", "light"))}
                 ></ReactSVG>
                 <div className={classNames("nav-holder", isOpen ? "" : "hidden-nav")}>
                     <nav className={classNames("color-color-dark-dark translucent")}>
