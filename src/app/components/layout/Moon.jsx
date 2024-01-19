@@ -7,9 +7,10 @@ import "./Moon.scss";
 export default function Moon(props) {
     const [currentImage, currentImageSet] = useState(1);
     const [currentPosition, currentPositionSet] = useState(0);
-    const defaultSpeed = 800;
+    const defaultSpeed = 500;
     const totalShadows = 3;
     const preloadImageBlock = 50;
+    const fileExtension = "png";
 
     function countDigits(imgs) {
         var c = 0;
@@ -20,11 +21,25 @@ export default function Moon(props) {
         return c;
     }
 
+    function preloadImage(img) {
+        const newImg = new Image();
+        newImg.src = createImageURL(img);
+    }
+
+    function createImageURL(img) {
+        return props.imageDirectory +
+            "/" +
+            (img)
+                .toString()
+                .padStart(countDigits(props.imageTotal), "0") +
+            "." + fileExtension;
+    }
+
     const handleScroll = () => {
         const scrollPosition = window.scrollY; // => scroll position
         const height = Math.max(
             document.body.scrollHeight,
-            document.body.offsetHeight,
+            document.body.offsetHeight
         );
         currentPositionSet(scrollPosition / height);
     };
@@ -32,22 +47,17 @@ export default function Moon(props) {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         if (props.imageTotal > preloadImageBlock && currentImage + preloadImageBlock < props.imageTotal) {
-
-            if ((currentImage % preloadImageBlock) == 0 || currentImage == 1) {
+            if (currentImage === 1) {
+                for (let i = 0; i < (preloadImageBlock * 2); i++) {
+                    preloadImage(currentImage + i);
+                }
+            } else if ((currentImage % preloadImageBlock) === 0) {
                 for (let i = 0; i < preloadImageBlock; i++) {
-                    console.log("getting image " + (currentImage + i));
-                    const newImg = new Image();
-                    newImg.src =
-                        "img/" +
-                        props.imageDirectory +
-                        "/" +
-                        (currentImage + i)
-                            .toString()
-                            .padStart(countDigits(props.imageTotal), "0") +
-                        ".png";
+                    preloadImage(currentImage + i + preloadImageBlock);
                 }
             }
         }
+
         setTimeout(() => {
             if (currentImage > props.imageTotal - 1) {
                 currentImageSet(1);
@@ -67,15 +77,7 @@ export default function Moon(props) {
                 style={{opacity: 1 - Math.sin(currentPosition)}}
             >
                 <CrossfadeImage
-                    src={
-                        "img/" +
-                        props.imageDirectory +
-                        "/" +
-                        currentImage
-                            .toString()
-                            .padStart(countDigits(props.imageTotal), "0") +
-                        ".png"
-                    }
+                    src={createImageURL(currentImage)}
                     duration={props.speed || defaultSpeed}
                     containerClass={
                         "holder shadow-" +

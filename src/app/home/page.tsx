@@ -31,7 +31,7 @@ export default async function Home() {
     return (
         <>
             <Moon
-                imageDirectory={"moon-rotate"}
+                imageDirectory={"img/moon-rotate"}
                 imageTotal={1350}
             />
             <SignUpThankYou
