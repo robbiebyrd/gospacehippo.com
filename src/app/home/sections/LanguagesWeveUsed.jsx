@@ -1,24 +1,18 @@
 import FlyingWordCloud from "@/app/components/layout/FlyingWordCloud";
 import React from "react";
-import { getColorColor as gcc } from "../../components/common/Colors";
+import {getColorColor as gcc} from "../../components/common/Colors";
 import Section from "../../components/layout/Section";
 import SectionLayout from "../../components/layout/SectionLayout";
 import "./LanguagesWeveUsed.scss";
 
-async function getData() {
-    const res = await fetch("http://10.10.0.56:5984/spacehippo/home");
-    return res.json();
-}
 
 export default async function LanguagesWeveUsed(props) {
-    const data = await getData();
-
-    const languages = data["content"]["languages"];
+    const languages = ["Elixir", "Perl", "Lua", "Bash", "TypeScript", "Lasso", "C#", "dBase", "Java", "Scala", "Visual", "Basic", "Go(lang)", "HyperTalk", "C++", "LotusScript", "Nix", "JavaScript", "TeX", "REXX", "Python", "Groovy", "T-SQL", "MOO", "Delphi", "Ruby", "BASIC", "ActionScript", "C", "Objective", "CFML", "Lingo", "Rust", "LiveCode", "Swift", "Logo", "FOXPRO", "PowerBuilder", "COBOL", "Assembly", "SQL", "Erlang", "PASCAL", "FORTRAN"];
 
     return (
         <Section
             id="LanguagesWeveUsed"
-            color={{ color: props.color, shade: props.shade }}
+            color={{color: props.color, shade: props.shade}}
             gradient={props.gradient}
         >
             <SectionLayout layout={22}>

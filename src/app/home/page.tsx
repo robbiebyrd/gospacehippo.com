@@ -31,7 +31,6 @@ export default async function Home() {
     return (
         <>
             <Moon
-                speed={800}
                 imageDirectory={"moon-rotate"}
                 imageTotal={1350}
             />

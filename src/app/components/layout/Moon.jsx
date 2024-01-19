@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import CrossfadeImage from "react-crossfade-image";
 import "./Moon.scss";
 
 export default function Moon(props) {
     const [currentImage, currentImageSet] = useState(1);
     const [currentPosition, currentPositionSet] = useState(0);
-    const defaultSpeed = 1000;
+    const defaultSpeed = 800;
     const totalShadows = 3;
+    const preloadImageBlock = 50;
 
     function countDigits(imgs) {
         var c = 0;
@@ -30,16 +31,22 @@ export default function Moon(props) {
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-        if (props.imageTotal > 5 && currentImage + 5 < props.imageTotal) {
-            const newImg = new Image();
-            newImg.src =
-                "img/" +
-                props.imageDirectory +
-                "/" +
-                (currentImage + 5)
-                    .toString()
-                    .padStart(countDigits(props.imageTotal), "0") +
-                ".png";
+        if (props.imageTotal > preloadImageBlock && currentImage + preloadImageBlock < props.imageTotal) {
+
+            if ((currentImage % preloadImageBlock) == 0 || currentImage == 1) {
+                for (let i = 0; i < preloadImageBlock; i++) {
+                    console.log("getting image " + (currentImage + i));
+                    const newImg = new Image();
+                    newImg.src =
+                        "img/" +
+                        props.imageDirectory +
+                        "/" +
+                        (currentImage + i)
+                            .toString()
+                            .padStart(countDigits(props.imageTotal), "0") +
+                        ".png";
+                }
+            }
         }
         setTimeout(() => {
             if (currentImage > props.imageTotal - 1) {
@@ -57,7 +64,7 @@ export default function Moon(props) {
         <div className="moon">
             <div
                 className={"moon-holder"}
-                style={{ opacity: 1 - Math.sin(currentPosition) }}
+                style={{opacity: 1 - Math.sin(currentPosition)}}
             >
                 <CrossfadeImage
                     src={
