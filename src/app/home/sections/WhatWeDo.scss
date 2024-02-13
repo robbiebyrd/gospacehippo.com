@@ -1,0 +1,20 @@
+
+#WhatWeDo {
+  width: 100%;
+
+  #work-segments {
+    @media (orientation: portrait) {
+      li {
+        h2 {
+          font-size: .75em !important;
+
+        }
+
+        svg {
+          margin-right: .25em;
+        }
+      }
+    }
+  }
+
+}

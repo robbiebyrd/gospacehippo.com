@@ -1,0 +1,28 @@
+#SignUpThankYou {
+  position: fixed;
+  animation: 1s fade-out-signup 5s ease-out forwards;
+  z-index: 9999;
+
+  div {
+    animation: 3s shrink-text 4s ease-in forwards;
+  }
+}
+
+@keyframes fade-out-signup {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shrink-text {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+
+}

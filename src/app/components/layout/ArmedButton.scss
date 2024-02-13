@@ -1,0 +1,69 @@
+@use "../css/typography.scss";
+
+@keyframes animation-toggle {
+  0% {
+    transform: translate(223px, 641.5px)
+  }
+
+  16.666667% {
+    transform: translate(223px, 641.5px);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1)
+  }
+
+  33.333333% {
+    transform: translate(223px, 524.5px)
+  }
+
+  100% {
+    transform: translate(223px, 524.5px);
+  }
+}
+
+@keyframes animation_timer {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes animation_cta {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+.launch-button-armed {
+  font-family: typography.$mono-font;
+}
+
+.popup.floating {
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  display: block;
+  overflow: hidden;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  .content {
+    height: 50%;
+    margin: typography.$font-regular;
+    position: relative;
+
+  }
+
+  .close.x {
+    display: none;
+  }
+
+  .corner {
+    display: none;
+  }
+
+}

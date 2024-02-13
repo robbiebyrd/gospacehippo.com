@@ -1,0 +1,17 @@
+#WhatsWithTheHippo {
+  #WhatsWithTheHippoText {
+    z-index: 1;
+  }
+
+  * img.hippo {
+    position: relative;
+    width: 100%;
+    transform: scaleX(-1) translateX(-10vw) scale(1.5) rotate(-5deg);
+    z-index: 99;
+    @media (orientation: portrait) {
+      width: 50%;
+      transform: scaleX(-1) translateX(-40vw) scale(2.5) rotate(-5deg);
+      opacity: .5;
+    }
+  }
+}

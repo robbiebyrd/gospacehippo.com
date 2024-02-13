@@ -1,0 +1,49 @@
+@keyframes move {
+  0% {
+    transform: translateY(-25vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes stress {
+  0% {
+    transform: skewX(-2deg) rotate(5deg);
+  }
+  14% {
+    transform: skewX(2deg) rotate(3deg);
+  }
+  28% {
+    transform: skewX(-2deg) rotate(0);;
+  }
+  42% {
+    transform: skewX(2deg) rotate(-3deg);
+  }
+  56% {
+    transform: skewX(-2deg) rotate(-5deg);
+  }
+  70% {
+    transform: skewX(2deg) rotate(-3deg);
+  }
+  84% {
+    transform: skewX(-2deg) rotate(0deg);;
+  }
+  100% {
+    transform: skewX(2deg) rotate(3deg);
+  }
+}
+
+.maxq {
+  animation: move 5s ease-in-out alternate infinite;
+  will-change: transform;
+  @media (orientation: portrait) {
+    width: 50%;
+  }
+
+  svg, img {
+    animation: stress .25s ease-in-out alternate infinite;
+    will-change: transform;
+  }
+}
+

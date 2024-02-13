@@ -1,0 +1,267 @@
+section {
+
+  &.spacer {
+    height: 100vh;
+  }
+
+  &.grid-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    clear: both;
+
+    div.grid-layout-1 {
+      width: 75%;
+    }
+
+    div.grid-layout-2 {
+      margin: 8em 0;
+      width: 75%;
+    }
+  }
+
+  &.grid-main {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr) repeat(4, 2fr) repeat(2, 1fr);
+    min-height: 100vh;
+    clear: both;
+    width: 100vw !important;
+    justify-content: center;
+
+
+    & img, fieldset {
+      z-index: 5;
+    }
+
+    div.flex {
+      display: flex !important;
+    }
+
+    div.grid-layout-1 {
+      grid-area: 3 / 2 / 8 / 8;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    div.grid-layout-1-alt {
+      grid-area: 2 / 2 / 8 / 8;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    div.grid-layout-1-right {
+      grid-area: 3/ 4 / 7 / 8;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    div.grid-layout-2 {
+      grid-area: 2 / 2 / 8 / 8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    div.grid-layout-3 {
+      grid-area: 4 / 1 / 8 / 8;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    div.grid-layout-4 {
+      grid-area: 6 / 5 / 8 / 9;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      margin: 2vh 2vw;
+    }
+
+    div.grid-layout-5 {
+      grid-area: 4 / 2 / 4 / 8;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-content: flex-end;
+      flex-wrap: wrap;
+      @media (orientation: portrait) {
+        grid-area: 1 / 2 / 4 / 8;
+      }
+    }
+
+    div.grid-layout-6 {
+      grid-area: 4 / 2 / 8 / 8;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    div.grid-layout-7 {
+      grid-area: 5 / 2 / 7 / 8;
+      @media (orientation: portrait) {
+        grid-area: 4 / 2 / 5 / 8;
+      }
+    }
+
+    div.grid-layout-8 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      grid-area: 1 / 2 / 9 / 8;
+    }
+
+    div.grid-layout-9 {
+      grid-area: 5 / 2 / 7 / 8;
+      @media (orientation: portrait) {
+        grid-area: 1 / 2 / 8 / 8;
+      }
+    }
+
+    div.grid-layout-10 {
+      grid-area: 2 / 2 / 8 / 3;
+    }
+
+    div.grid-layout-11 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      grid-area: 1/4/8/9;
+      margin: 0 5vw;
+
+    }
+
+    div.grid-layout-12 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-area: 2 / 7 / 8 / 8;
+      @media (orientation: portrait) {
+        grid-area: 1 / 3 / 4 / 7 !important;
+      }
+    }
+
+    div.grid-layout-13 {
+      grid-area: 2 / 2 / 6 / 6;
+      @media (orientation: portrait) {
+        grid-area: 1 / 2 / 6 / 8;
+      }
+    }
+
+    div.grid-layout-14 {
+      grid-area: 3/6/8/9;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    div.grid-layout-15 {
+      grid-area: 2/2/8/7;
+    }
+
+    div.grid-layout-16 {
+      grid-area: 2/2/8/8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    div.grid-layout-17 {
+      grid-area: 2/7/8/8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    div.grid-layout-18 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-area: 2 / 2 / 8 / 6;
+      @media (orientation: portrait) {
+        grid-area: 4 / 2 / 8 / 8 !important;
+      }
+    }
+
+    div.grid-layout-19 {
+      grid-area: 3 / 6 / 9 / 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+    }
+
+    div.grid-layout-20 {
+      grid-area: 4 / 6 / 8 / 9;
+      text-align: center;
+      z-index: 10;
+      @media (orientation: portrait) {
+        grid-area: 6 / 1 / 8 / 8;
+      }
+    }
+
+    div.grid-layout-21 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-area: 2 / 7 / 8 / 8;
+      @media (orientation: portrait) {
+        grid-area: 4 / 3 / 9 / 7 !important;
+      }
+    }
+
+    div.grid-layout-22 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-area: 1 / 2 / 3 / 8;
+      //@media (orientation: portrait) {
+      //  grid-area: 4 / 3 / 9 / 7 !important;
+      //}
+    }
+
+    div.grid-layout-all {
+      grid-area: 1 / 1 / 8 / 8;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    div.grid-layout-almost-all-1 {
+      grid-area: 3/2/4/8;
+    }
+
+    div.grid-layout-almost-all-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-area: 1 / 2 / 7 / 8;
+    }
+
+    div.grid-layout-almost-all-3 {
+      grid-area: 3 / 1 / 9 / 9;
+      @media (orientation: portrait) {
+        height: 100%;
+      }
+    }
+
+    div.grid-layout-almost-all-4 {
+      grid-area: 3 / 1 / 9 / 9;
+    }
+  }
+}

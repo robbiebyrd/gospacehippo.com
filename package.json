@@ -1,0 +1,72 @@
+{
+  "name": "space-hippo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "./deploy.sh"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "prettier": {
+    "tabWidth": 4
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/pro-duotone-svg-icons": "^6.4.2",
+    "@fortawesome/pro-light-svg-icons": "^6.4.2",
+    "@fortawesome/pro-regular-svg-icons": "^6.4.2",
+    "@fortawesome/pro-solid-svg-icons": "^6.4.2",
+    "@fortawesome/pro-thin-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/sharp-light-svg-icons": "^6.5.1",
+    "@fortawesome/sharp-regular-svg-icons": "^6.5.1",
+    "@fortawesome/sharp-solid-svg-icons": "^6.5.1",
+    "@svgr/webpack": "^8.1.0",
+    "classnames": "^2.3.2",
+    "flickity": "^2.2.1",
+    "next": "14.0.4",
+    "react": "^18.2.0",
+    "react-crossfade-image": "^1.2.0",
+    "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.6.2",
+    "react-flickity-component": "^4.0.7",
+    "react-gtm-module": "^2.0.11",
+    "react-svg": "^16.1.30",
+    "react-visibility-sensor": "^5.1.1",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-gtm-module": "^2.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.0.4",
+    "sass": "^1.69.6",
+    "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

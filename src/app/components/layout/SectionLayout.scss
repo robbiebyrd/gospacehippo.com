@@ -1,0 +1,13 @@
+@for $i from 1 through 10 {
+  .col-#{$i} {
+    columns: #{$i};
+    -webkit-columns: #{$i};
+    -moz-columns: #{$i};
+    column-gap: 4em;
+    margin: 2em 0;
+    @media (max-width: 999px) {
+      columns: 1 !important;
+      column-fill: auto;
+    }
+  }
+}

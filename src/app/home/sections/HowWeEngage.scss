@@ -1,0 +1,21 @@
+#HowWeEngage {
+  .floatings {
+    display: flex;
+    flex-direction: row;
+
+    aside {
+      height: 100% !important;
+      margin-right: 1em;
+      margin-top: 0;
+      margin-left: 0;
+    }
+
+    @media (orientation: portrait) {
+      flex-direction: column;
+
+      aside {
+        margin: 0 0 3em 0 !important;
+      }
+    }
+  }
+}

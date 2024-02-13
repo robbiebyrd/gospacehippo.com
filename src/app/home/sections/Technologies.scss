@@ -1,0 +1,50 @@
+#Technologies {
+  * ul.topics {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    margin: 0 0 2em;
+    list-style: none;
+    @media (orientation: portrait) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    li {
+      width: 85%;
+
+      &:first-of-type {
+        width: 25%;
+      }
+
+      ul {
+        li {
+          width: auto;
+        }
+
+        li:first-of-type {
+          width: auto;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+
+@media (orientation: portrait) {
+  #Technologies {
+    * ul.topics {
+
+      li {
+        h1, h2, h3, h4, h5 {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

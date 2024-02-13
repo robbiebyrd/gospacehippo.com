@@ -1,0 +1,136 @@
+@use "sass:map";
+@use "sass:math";
+@use "../css/colors";
+@use "../css/helpers";
+@use "../css/typography";
+@use "../css/vectors";
+
+.alert {
+  position: fixed;
+  width: 80%;
+  height: 70%;
+  display: block;
+  @include helpers.force-center-div;
+  z-index: 1 !important;
+
+  .content {
+    padding: typography.$font-regular;
+
+    h1 {
+      font-size: typography.$font-bigger;
+    }
+
+    h2 {
+      font-family: typography.$mono-font;
+      font-size: typography.$font-big;
+    }
+
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    z-index: 22;
+    right: .5em;
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 2/1 !important;
+    font-family: typography.$mono-font;
+    font-size: typography.$font-big;
+    background: colors.$color-dark;
+    padding: math.div(typography.$font-tiny, 2);
+    text-align: center;
+
+    &.x:before {
+      content: "X";
+    }
+  }
+
+  .timer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: typography.$font-regular;
+    margin: math.div(typography.$font-tiny, 2);
+    animation: linear shrink-width 5s;
+  }
+
+  .corner {
+    position: absolute;
+    z-index: 2;
+    width: typography.$font-regular;
+    height: typography.$font-regular;
+    margin: math.div(typography.$font-tiny, 2);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
+  }
+
+  svg {
+    width: 20%;
+    float: right;
+  }
+
+  @each $color in map.keys(colors.$colors) {
+    &.color-color-#{$color} {
+      $light-color: map.get(map.get(colors.$colors, $color), "light");
+      $dark-color: map.get(map.get(colors.$colors, $color), "dark");
+
+      &-dark {
+        box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color,
+        math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $light-color;
+        background-color: $dark-color;
+
+        .timer {
+          background-color: $light-color !important;
+          z-index: 1;
+        }
+
+        .corner {
+          @include vectors.corner_alert_window($light-color, $dark-color);
+        }
+
+        svg.colorize path {
+          fill: $light-color;
+        }
+
+        h2 {
+          color: $light-color;
+        }
+
+        h1, p, .close {
+          color: colors.$color-bright;
+        }
+      }
+
+      &,
+      &-light {
+        box-shadow: inset math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color,
+        math.div(typography.$font-tiny, 2) math.div(typography.$font-tiny, 2) $dark-color;
+        background-color: $light-color;
+
+        .timer {
+          background: $dark-color !important;
+          z-index: 1;
+        }
+
+        .corner {
+          @include vectors.corner_alert_window($dark-color, $light-color);
+        }
+
+        svg.colorize path {
+          fill: $dark-color;
+        }
+
+        h2 {
+          color: $dark-color;
+        }
+
+        h1, p, .close {
+          color: $dark-color;
+        }
+      }
+    }
+  }
+}

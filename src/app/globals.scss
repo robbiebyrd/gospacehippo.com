@@ -1,0 +1,35 @@
+@use "components/css/typography";
+
+// Zoho SalesIQ Chat Button
+#zsiqbtn {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  opacity: .5;
+  transition: opacity 1s;
+
+
+  &:hover {
+    opacity: 1;
+  }
+
+  #siqbtndiv {
+    em, span {
+      display: none !important;
+    }
+
+    &:before {
+      font-family: typography.$header-font !important;
+      font-weight: typography.$font-bold;
+      content: "?";
+    }
+
+  }
+
+  .zsiq_flt_rel4 {
+    width: auto !important;
+    padding: 33px !important;
+    border-radius: 30px !important;
+  }
+}
+
